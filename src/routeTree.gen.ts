@@ -21,7 +21,6 @@ import { Route as SignUpImport } from './routes/signUp'
 import { Route as SignInImport } from './routes/signIn'
 import { Route as ResetPasswordImport } from './routes/resetPassword'
 import { Route as ProfileImport } from './routes/profile'
-import { Route as GetspecifiuserImport } from './routes/getspecifiuser'
 import { Route as GetStatsImport } from './routes/getStats'
 import { Route as ForgotPasswordImport } from './routes/forgotPassword'
 import { Route as DeleteProfileImport } from './routes/deleteProfile'
@@ -88,12 +87,6 @@ const ResetPasswordRoute = ResetPasswordImport.update({
 const ProfileRoute = ProfileImport.update({
   id: '/profile',
   path: '/profile',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const GetspecifiuserRoute = GetspecifiuserImport.update({
-  id: '/getspecifiuser',
-  path: '/getspecifiuser',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -254,13 +247,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GetStatsImport
       parentRoute: typeof rootRoute
     }
-    '/getspecifiuser': {
-      id: '/getspecifiuser'
-      path: '/getspecifiuser'
-      fullPath: '/getspecifiuser'
-      preLoaderRoute: typeof GetspecifiuserImport
-      parentRoute: typeof rootRoute
-    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -374,7 +360,6 @@ export interface FileRoutesByFullPath {
   '/deleteProfile': typeof DeleteProfileRoute
   '/forgotPassword': typeof ForgotPasswordRoute
   '/getStats': typeof GetStatsRoute
-  '/getspecifiuser': typeof GetspecifiuserRoute
   '/profile': typeof ProfileRoute
   '/resetPassword': typeof ResetPasswordRoute
   '/signIn': typeof SignInRoute
@@ -401,7 +386,6 @@ export interface FileRoutesByTo {
   '/deleteProfile': typeof DeleteProfileRoute
   '/forgotPassword': typeof ForgotPasswordRoute
   '/getStats': typeof GetStatsRoute
-  '/getspecifiuser': typeof GetspecifiuserRoute
   '/profile': typeof ProfileRoute
   '/resetPassword': typeof ResetPasswordRoute
   '/signIn': typeof SignInRoute
@@ -429,7 +413,6 @@ export interface FileRoutesById {
   '/deleteProfile': typeof DeleteProfileRoute
   '/forgotPassword': typeof ForgotPasswordRoute
   '/getStats': typeof GetStatsRoute
-  '/getspecifiuser': typeof GetspecifiuserRoute
   '/profile': typeof ProfileRoute
   '/resetPassword': typeof ResetPasswordRoute
   '/signIn': typeof SignInRoute
@@ -458,7 +441,6 @@ export interface FileRouteTypes {
     | '/deleteProfile'
     | '/forgotPassword'
     | '/getStats'
-    | '/getspecifiuser'
     | '/profile'
     | '/resetPassword'
     | '/signIn'
@@ -484,7 +466,6 @@ export interface FileRouteTypes {
     | '/deleteProfile'
     | '/forgotPassword'
     | '/getStats'
-    | '/getspecifiuser'
     | '/profile'
     | '/resetPassword'
     | '/signIn'
@@ -510,7 +491,6 @@ export interface FileRouteTypes {
     | '/deleteProfile'
     | '/forgotPassword'
     | '/getStats'
-    | '/getspecifiuser'
     | '/profile'
     | '/resetPassword'
     | '/signIn'
@@ -538,7 +518,6 @@ export interface RootRouteChildren {
   DeleteProfileRoute: typeof DeleteProfileRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   GetStatsRoute: typeof GetStatsRoute
-  GetspecifiuserRoute: typeof GetspecifiuserRoute
   ProfileRoute: typeof ProfileRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SignInRoute: typeof SignInRoute
@@ -565,7 +544,6 @@ const rootRouteChildren: RootRouteChildren = {
   DeleteProfileRoute: DeleteProfileRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   GetStatsRoute: GetStatsRoute,
-  GetspecifiuserRoute: GetspecifiuserRoute,
   ProfileRoute: ProfileRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SignInRoute: SignInRoute,
@@ -601,7 +579,6 @@ export const routeTree = rootRoute
         "/deleteProfile",
         "/forgotPassword",
         "/getStats",
-        "/getspecifiuser",
         "/profile",
         "/resetPassword",
         "/signIn",
@@ -644,9 +621,6 @@ export const routeTree = rootRoute
     },
     "/getStats": {
       "filePath": "getStats.tsx"
-    },
-    "/getspecifiuser": {
-      "filePath": "getspecifiuser.tsx"
     },
     "/profile": {
       "filePath": "profile.tsx"

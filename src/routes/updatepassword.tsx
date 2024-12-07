@@ -96,8 +96,8 @@ function RouteComponent() {
             <p style={{ color: "red", marginTop: "5px" }}>{newPassError}</p>
           )}
         </div>
-        <button onClick={handleUpdatePassword} disabled={mutation.isLoading}>
-          {mutation.isLoading ? "Updating..." : "Update Password"}
+        <button onClick={handleUpdatePassword} disabled={mutation.isPending}>
+          {mutation.isPending ? "Updating..." : "Update Password"}
         </button>
         {mutation.isError && (
           <p style={{ color: "red", marginTop: "10px" }}>

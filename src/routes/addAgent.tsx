@@ -61,10 +61,6 @@ function AddAgent() {
           body: JSON.stringify(formData),
         }
       );
-
-      // if (!response.ok) {
-      //   throw new Error(`Error: ${response.status}`);
-      // }
       if (response.ok) {
         setResponseMessage(`${formData.user_type} Created Successfully`);
       } else {
@@ -75,7 +71,7 @@ function AddAgent() {
           setResponseMessage("Invalid Data. Please Check");
         } else {
           setResponseMessage(
-            errorData.massage ||
+            errorData.message ||
               " An Unexpected error occured. Please try again"
           );
         }
@@ -94,6 +90,7 @@ function AddAgent() {
 
   return (
     <div>
+      {message && <p style={{ color: "red" }}>{message}</p>}
       <h1>Add Agent</h1>
       <form onSubmit={handleSubmit}>
         <div>

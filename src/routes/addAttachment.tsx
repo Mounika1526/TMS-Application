@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-// import { useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,13 +10,12 @@ export const Route = createFileRoute("/addAttachment")({
 
 function AddAttachment() {
   const [ticketId, setTicketId] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [responseMessage, setResponseMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const token = localStorage.getItem("accessToken");
-  //   const navigate = useNavigate()
 
   const handleFileUpload = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,11 +54,7 @@ function AddAttachment() {
       setFile(null);
       setTicketId("");
       setResponseMessage("");
-
-      // navigate(`/ticket/${ticketId}/details`)
     } catch (err) {
-      //  catch (err) {
-      //   setError(err.message || "Failed to upload file.");
       const errorMessage = (err as Error).message || "Failed to upload file.";
       setError(errorMessage);
     } finally {
@@ -88,7 +82,7 @@ function AddAttachment() {
           <Input
             type="file"
             id="file"
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={(e) => setFile(e.target.files ? e.target.files[0] : null)}
             required
             style={{ cursor: "pointer" }}
           />
