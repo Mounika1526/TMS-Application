@@ -9,34 +9,34 @@ export const Route = createRootRoute({
         <div className="nav-links flex gap-4">
           <Link to="/" className="nav-link [&.active]:font-bold">
             Home
-          </Link>
+          </Link>{" "}
           <Link to="/signIn" className="nav-link [&.active]:font-bold">
             Sign In
-          </Link>
+          </Link>{" "}
           <Link to="/signUp" className="nav-link [&.active]:font-bold">
             Sign Up
-          </Link>
+          </Link>{" "}
           <Link to="/forgotPassword" className="nav-link [&.active]:font-bold">
             Forgot Password
-          </Link>
+          </Link>{" "}
           <Link to="/profile" className="nav-link [&.active]:font-bold">
             Profile
-          </Link>
+          </Link>{" "}
           {/* <Link to="/deleteProfile" className="nav-link [&.active]:font-bold">
             Delete Profile
           </Link> */}
           <Link to="/resetPassword" className="nav-link [&.active]:font-bold">
             Reset Password
-          </Link>
+          </Link>{" "}
           <Link to="/createTicket" className="nav-link [&.active]:font-bold">
             Create Ticket
-          </Link>
+          </Link>{" "}
           <Link to="/users" className="nav-link [&.active]:font-bold">
             Tickets
-          </Link>
+          </Link>{" "}
           <Link to="/user-management" className="nav-link [&.active]:font-bold">
             Users Details
-          </Link>
+          </Link>{" "}
         </div>
       </div>
       <hr />

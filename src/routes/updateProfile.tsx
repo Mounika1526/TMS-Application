@@ -12,6 +12,10 @@ function UpdateProfile() {
   const [profile, setProfile] = useState<any>({ full_name: "", email: "" });
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [fieldErrors, setFieldErrors] = useState<{
+    full_name?: string;
+    email?: string;
+  }>({});
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 
@@ -58,6 +62,10 @@ function UpdateProfile() {
       ...prevProfile,
       [name]: value,
     }));
+    setFieldErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: undefined,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,6 +77,7 @@ function UpdateProfile() {
 
     setLoading(true);
     setMessage("");
+    setFieldErrors({});
 
     try {
       const response = await fetch(
@@ -88,7 +97,11 @@ function UpdateProfile() {
         setTimeout(() => navigate({ to: "/profile" }), 2000); // Redirect after success
       } else {
         const errorData = await response.json();
-        setMessage(errorData.message || "Failed to update profile.");
+        if (response.status === 422 && errorData.errorData?.nested) {
+          setFieldErrors(errorData.errorData.nested);
+        } else {
+          setMessage(errorData.message || "Failed to update profile.");
+        }
       }
     } catch (error) {
       setMessage("Network error. Please try again later.");
@@ -118,9 +131,11 @@ function UpdateProfile() {
               name="full_name"
               value={profile.full_name}
               onChange={handleInputChange}
-              required
             />
           </Label>
+          {fieldErrors.full_name && (
+            <p style={{ color: "red" }}>{fieldErrors.full_name}</p>
+          )}
         </div>
         <div style={{ marginBottom: "10px" }}>
           <Label>
@@ -130,9 +145,11 @@ function UpdateProfile() {
               name="email"
               value={profile.email}
               onChange={handleInputChange}
-              required
             />
           </Label>
+          {fieldErrors.email && (
+            <p style={{ color: "red" }}>{fieldErrors.email}</p>
+          )}
         </div>
         <div
           style={{

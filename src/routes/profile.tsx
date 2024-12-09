@@ -17,7 +17,6 @@ function Profile() {
       setMessage("You need to log in to view your profile.");
       return;
     }
-
     const fetchProfile = async () => {
       try {
         const response = await fetch(
